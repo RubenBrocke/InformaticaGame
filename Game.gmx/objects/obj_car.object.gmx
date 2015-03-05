@@ -80,7 +80,7 @@ if key_up == true {
 
 //Brake or reverse
 if key_down == true {
-    if move_speed &gt;= 0 {
+    if move_speed &lt;= 0 {
         move_speed -= acceleration/2 }
     if move_speed &gt; 0 {
         move_speed -= acceleration*4 }
@@ -97,6 +97,15 @@ forward_x = lengthdir_x(50,-phy_rotation +90) * move_speed
 forward_y = lengthdir_y(50,-phy_rotation +90) * move_speed
 physics_apply_force(x,y,forward_x,forward_y)
 
+//Slowing down
+if !keyboard_check_direct(vk_down) and !keyboard_check_direct(vk_up){
+    if move_speed &gt; 0{
+    move_speed -=0.25
+}
+    if move_speed &lt; 0{
+    move_speed +=0.125
+}
+}
 
 </string>
           </argument>
@@ -118,7 +127,7 @@ physics_apply_force(x,y,forward_x,forward_y)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///force view to player
+            <string>///Focus on player
 
 view_xview = phy_position_x-view_wview/2
 view_yview = phy_position_y-view_hview/2
