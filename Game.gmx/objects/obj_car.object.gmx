@@ -35,6 +35,46 @@ move_speed = 0
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///initialize particles
+psys = part_system_create() 
+part_system_automatic_draw(psys,false)
+part_system_position(psys,0,0)
+emm = part_emitter_create(psys)
+part_system_depth(psys,-20000)
+
+//tire particle
+tire_part = part_type_create()
+part_type_sprite(tire_part,spr_tire_part,false,false,false)
+part_type_life(tire_part,10,300)
+part_type_alpha2(tire_part,0.1,0)
+
+//smoke particle
+smoke_part = part_type_create()
+part_type_sprite(smoke_part,spr_smoke_part,false,false,false)
+part_type_size(smoke_part,0.1,2,0.1,0.1)
+part_type_orientation(smoke_part,0,359,1,1,false)
+part_type_life(smoke_part,10,200)
+part_type_alpha2(smoke_part,0.1,0)
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -135,6 +175,70 @@ view_yview = phy_position_y-view_hview/2
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///particle system
+//particle systems
+if phy_speed &gt; 1{
+
+    part_emitter_region(psys,emm,x-1,x+1,y-1,y+1,ps_shape_rectangle,ps_distr_gaussian)
+    inertia_dir = point_direction(x,y,x+phy_speed_x,y+phy_speed_y)
+    forward_dir = point_direction(x,y,x+lengthdir_x(50,-phy_rotation),y+lengthdir_y(50,-phy_rotation))
+    angle_dif = abs(angle_difference(forward_dir,inertia_dir)+90)
+    
+   if angle_dif &gt; 25{
+   //emmit tires
+    part_type_orientation(tire_part,-phy_rotation,-phy_rotation,0,0,0)
+    part_emitter_burst(psys,emm,tire_part,20)
+   //emmit smoke
+   part_type_speed(smoke_part,1,2,0,0)
+   part_type_direction(smoke_part,inertia_dir,inertia_dir,0,0)
+   part_emitter_burst(psys,emm,smoke_part,1)
+    }
+    }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>part_system_drawit(psys)
+draw_self()
+
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
   </events>
   <PhysicsObject>-1</PhysicsObject>
@@ -144,7 +248,7 @@ view_yview = phy_position_y-view_hview/2
   <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
   <PhysicsObjectLinearDamping>1</PhysicsObjectLinearDamping>
-  <PhysicsObjectAngularDamping>3</PhysicsObjectAngularDamping>
+  <PhysicsObjectAngularDamping>8</PhysicsObjectAngularDamping>
   <PhysicsObjectFriction>2</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>

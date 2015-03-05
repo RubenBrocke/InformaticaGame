@@ -7,6 +7,8 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_car</sprite>
+    <sprite>sprites\spr_tire_part</sprite>
+    <sprite>sprites\spr_smoke_part</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_tileset</background>
