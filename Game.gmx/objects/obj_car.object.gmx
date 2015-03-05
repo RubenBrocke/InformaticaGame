@@ -230,7 +230,8 @@ if phy_speed &gt; 1{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>part_system_drawit(psys)
+            <string>///Tire particles
+part_system_drawit(psys)
 draw_self()
 
 </string>
