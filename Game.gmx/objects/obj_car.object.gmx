@@ -140,12 +140,10 @@ physics_apply_force(x,y,forward_x,forward_y)
 //Slowing down
 if !keyboard_check_direct(vk_down) and !keyboard_check_direct(vk_up){
     if move_speed &gt; 0{
-    move_speed -=0.25
-}
+        move_speed -=0.25 }
     if move_speed &lt; 0{
-    move_speed +=0.125
-}
-}
+        move_speed +=0.125 }
+    }
 
 </string>
           </argument>
