@@ -7,10 +7,105 @@
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
-  <events/>
-  <PhysicsObject>0</PhysicsObject>
+  <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Set variables
+max_speed = 8
+turning_circle = 2
+acceleration = 0.5
+move_speed = 0
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Movement
+//Set keys
+key_right = keyboard_check(vk_right)
+key_left = keyboard_check(vk_left)
+key_up = keyboard_check(vk_up)
+key_down = keyboard_check(vk_down)
+
+//Turn right
+if key_right == true {
+    phy_rotation += turning_circle
+    }
+
+//Turn left
+if key_left == true {
+    phy_rotation -= turning_circle
+    }
+
+//Accelerate
+if key_up == true {
+    if move_speed &gt;=0 {
+        move_speed += acceleration }
+    if move_speed &lt; 0 {
+        move_speed += acceleration*4 }
+    }
+
+//Brake or reverse
+if key_down == true {
+    if move_speed &gt;= 0 {
+        move_speed -= acceleration/2 }
+    if move_speed &gt; 0 {
+        move_speed -= acceleration*4 }
+    }
+
+//Speedlimit
+if move_speed &gt; max_speed {
+    move_speed = max_speed }
+if move_speed &lt; -8 {
+    move_speed = -8 }
+
+
+
+
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
+  <PhysicsObject>-1</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
-  <PhysicsObjectShape>0</PhysicsObjectShape>
+  <PhysicsObjectShape>1</PhysicsObjectShape>
   <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
   <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
@@ -19,5 +114,8 @@
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>16,16</point>
+    <point>16,16</point>
+  </PhysicsShapePoints>
 </object>
