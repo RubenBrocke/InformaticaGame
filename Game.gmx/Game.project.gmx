@@ -8,7 +8,9 @@
   <sprites name="sprites">
     <sprite>sprites\spr_car</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\bg_tileset</background>
+  </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\obj_car</object>
