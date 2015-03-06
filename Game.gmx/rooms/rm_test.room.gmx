@@ -52,6 +52,10 @@
   </views>
   <instances>
     <instance objName="obj_car" x="192" y="320" name="inst_63547F44" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ramp" x="576" y="992" name="inst_F3683533" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ramp" x="576" y="1024" name="inst_1827FA6A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ramp" x="576" y="1056" name="inst_694F8C98" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ramp" x="576" y="1088" name="inst_B8661F82" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset" x="0" y="0" w="32" h="32" xo="128" yo="160" id="10000001" name="inst_81186C96" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

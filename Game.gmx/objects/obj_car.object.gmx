@@ -31,6 +31,8 @@ turning_circle = 2
 acceleration = 0.5
 move_speed = 0
 
+global.inair = false
+
 </string>
           </argument>
         </arguments>
@@ -133,9 +135,13 @@ if move_speed &lt; -max_speed/2 {
     move_speed = -max_speed/2 }
 
 //Moving
+if !global.inair{
 forward_x = lengthdir_x(50,-phy_rotation +90) * move_speed
 forward_y = lengthdir_y(50,-phy_rotation +90) * move_speed
+}
+
 physics_apply_force(x,y,forward_x,forward_y)
+
 
 //Slowing down
 if !keyboard_check_direct(vk_down) and !keyboard_check_direct(vk_up){
@@ -198,7 +204,7 @@ if phy_speed &gt; 1{
     forward_dir = point_direction(x,y,x+lengthdir_x(50,-phy_rotation),y+lengthdir_y(50,-phy_rotation))
     angle_dif = abs(angle_difference(forward_dir,inertia_dir)+90)
     
-   if angle_dif &gt; 25{
+   if angle_dif &gt; 25 and !global.inair{
    //emmit tires
     part_type_orientation(tire_part,-phy_rotation,-phy_rotation,0,0,0)
     part_emitter_burst(psys,emm,tire_part,20)
@@ -208,6 +214,37 @@ if phy_speed &gt; 1{
    part_emitter_burst(psys,emm,smoke_part,1)
     }
     }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///jumping
+
+if place_meeting(x,y,obj_ramp){
+
+timeline_index = tl_jump
+timeline_running = true
+timeline_position = 0
+
+}
+
+
 </string>
           </argument>
         </arguments>
