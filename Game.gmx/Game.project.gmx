@@ -3,29 +3,40 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <NewExtensions/>
-  <sounds name="sound"/>
+  <NewExtensions>
+    <extension index="0">extensions\GameMaker Server+(Windows)</extension>
+  </NewExtensions>
+  <sounds name="sound">
+    <sound>sound\sound0</sound>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_car</sprite>
     <sprite>sprites\spr_tire_part</sprite>
     <sprite>sprites\spr_smoke_part</sprite>
     <sprite>sprites\spr_ramp</sprite>
     <sprite>sprites\spr_tree</sprite>
+    <sprite>sprites\spr_tile_grass</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_tileset</background>
   </backgrounds>
   <paths name="paths"/>
-  <scripts name="scripts"/>
   <objects name="objects">
     <object>objects\obj_car</object>
+    <object>objects\obj_car_other</object>
     <object>objects\obj_ramp</object>
     <object>objects\obj_tree</object>
+    <object>objects\obj_audio</object>
+    <object>objects\obj_tile_grass</object>
+    <object>objects\obj_gms</object>
+    <object>objects\obj_login</object>
   </objects>
   <timelines name="timelines">
     <timeline>timelines\tl_jump</timeline>
   </timelines>
   <rooms name="rooms">
+    <room>rooms\rm_init</room>
+    <room>rooms\rm_login</room>
     <room>rooms\rm_test</room>
   </rooms>
   <help>
